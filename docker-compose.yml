@@ -1,0 +1,13 @@
+services:
+  foodlens:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_PATH: /data/foodlens.db
+      CORS_ORIGINS: ${CORS_ORIGINS:-*}
+    volumes:
+      - foodlens_data:/data
+    restart: unless-stopped
+volumes:
+  foodlens_data:
