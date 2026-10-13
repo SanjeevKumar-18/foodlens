@@ -2,9 +2,5 @@ services:
   - type: web
     name: foodlens
     runtime: docker
-    plan: starter
+    plan: free
     healthCheckPath: /api/health
-    disk:
-      name: foodlens-data
-      mountPath: /data
-      sizeGB: 1

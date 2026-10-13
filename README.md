@@ -21,7 +21,7 @@ Open [http://localhost:8000](http://localhost:8000). The API docs are at `/docs`
 docker compose up --build
 ```
 
-The compose setup persists the SQLite file in a named volume. The included `render.yaml` deploys a single Docker web service with a persistent disk. SQLite needs persistent storage in production; do not deploy it on an ephemeral filesystem.
+The compose setup persists the SQLite file in a named volume. The included `render.yaml` deploys a single Docker web service on Render's free plan. Its SQLite database uses the service's ephemeral filesystem, so saved product data can reset when Render restarts or redeploys the service. This is suitable for a short-lived demo; use a managed database and persistent storage for long-term use.
 
 ## What the app does
 
