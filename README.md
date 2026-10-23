@@ -23,6 +23,10 @@ docker compose up --build
 
 The compose setup persists the SQLite file in a named volume. The included `render.yaml` deploys a single Docker web service on Render's free plan. Its SQLite database uses the service's ephemeral filesystem, so saved product data can reset when Render restarts or redeploys the service. This is suitable for a short-lived demo; use a managed database and persistent storage for long-term use.
 
+## Deployed app
+
+FoodLens is deployed on Render: [foodlens-oqay.onrender.com](https://foodlens-oqay.onrender.com). The API health check is available at [`/api/health`](https://foodlens-oqay.onrender.com/api/health). The service uses Render's free instance, which can spin down while idle; the first request afterward may take longer. SQLite is stored on the instance's ephemeral filesystem, so saved product data may reset after a restart or redeploy. No paid database or persistent disk is configured.
+
 ## What the app does
 
 - Looks up the local catalog by barcode and requests available ingredient, nutrition, allergen, and label-image fields from Open Food Facts. A sourced catalog fallback fills the known barcode `8901719133886` with its matching [Tesco product listing](https://www.tesco.com/shop/en-GB/products/321050864) when Open Food Facts has no ingredient panel. When a product has only a usable label image, the browser can read and save recognized ingredients to SQLite for future scans.
